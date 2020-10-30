@@ -30,6 +30,7 @@
 
 // A constantPoolKlass is the klass of a constantPoolOop
 
+// TODO 常量池类型对象
 class constantPoolKlass : public Klass {
   juint    _alloc_size;        // allocation profiling support
  public:

@@ -2718,6 +2718,7 @@ instanceKlassHandle ClassFileParser::parseClassFile(Symbol* name,
 
   cfs->guarantee_more(8, CHECK_(nullHandle));  // magic, major, minor
   // Magic value
+  // TODO 读取魔数
   u4 magic = cfs->get_u4_fast();
   guarantee_property(magic == JAVA_CLASSFILE_MAGIC,
                      "Incompatible magic value %u in class file %s",

@@ -58,12 +58,16 @@ class CMSIsAliveClosure;
 class PSPromotionManager;
 class ParCompactionManager;
 
+// TODO 对象指针
 class oopDesc {
   friend class VMStructs;
  private:
+  // TODO 存储 GC 分代信息 并发锁等
   volatile markOop  _mark;
   union _metadata {
+    // TODO 宽指针
     wideKlassOop    _klass;
+    // TODO 压缩指针
     narrowOop       _compressed_klass;
   } _metadata;
 

@@ -204,6 +204,7 @@ class Klass : public Klass_vtbl {
   //
   // Final note:  This comes first, immediately after Klass_vtbl,
   // because it is frequently queried.
+  // TODO 对象布局的综合描述符
   jint        _layout_helper;
 
   // The fields _super_check_offset, _secondary_super_cache, _secondary_supers
@@ -216,6 +217,7 @@ class Klass : public Klass_vtbl {
 
   // Class name.  Instance classes: java/lang/String, etc.  Array classes: [I,
   // [Ljava/lang/String;, etc.  Set to zero for all other kinds of classes.
+  // TODO 类名, 比如 java.lang.String 的类名会是 java/lang/String
   Symbol*     _name;
 
  public:
@@ -238,19 +240,25 @@ class Klass : public Klass_vtbl {
   // Ordered list of all primary supertypes
   klassOop    _primary_supers[_primary_super_limit];
   // java/lang/Class instance mirroring this class
+  // TODO 类的镜像类
   oop       _java_mirror;
   // Superclass
+  // TODO 父类
   klassOop  _super;
   // First subclass (NULL if none); _subklass->next_sibling() is next one
+  // TODO 指向第一个子类, 如果没有就是 NULL
   klassOop _subklass;
   // Sibling link (or NULL); links all subklasses of a klass
+  // TODO 指向下一个兄弟节点, 如果没有就是 NULL
   klassOop _next_sibling;
 
   //
   // End of the oop block.
   //
 
+  // TODO 访问修饰符
   jint        _modifier_flags;  // Processed access flags, for use by Class.getModifiers.
+  // TODO 权限修饰符
   AccessFlags _access_flags;    // Access flags. The class/interface distinction is stored here.
 
 #ifndef PRODUCT

@@ -74,6 +74,7 @@ class GCHeapLog : public EventLogBase<GCMessage> {
 //     G1CollectedHeap
 //   ParallelScavengeHeap
 //
+// TODO JVM 内部的堆内存区
 class CollectedHeap : public CHeapObj {
   friend class VMStructs;
   friend class IsGCActiveMark; // Block structured external access to _is_gc_active

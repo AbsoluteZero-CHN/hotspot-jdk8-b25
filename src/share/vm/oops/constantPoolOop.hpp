@@ -80,6 +80,7 @@ class CPSlot VALUE_OBJ_CLASS_SPEC {
   }
 };
 
+// TODO 常量池指针, 在 32bit 计算机上占 40 个字节(8 + 2父类属性) * 4
 class constantPoolOopDesc : public oopDesc {
   friend class VMStructs;
   friend class BytecodeInterpreter;  // Directly extracts an oop in the pool for fast instanceof/checkcast

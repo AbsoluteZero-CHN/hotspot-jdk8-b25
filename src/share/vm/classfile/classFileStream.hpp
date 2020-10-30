@@ -48,10 +48,12 @@
 // The caller is responsible for deallocating the buffer and for using
 // ResourceMarks appropriately when constructing streams.
 
+// TODO 字节码文件流
 class ClassFileStream: public ResourceObj {
  private:
   u1*   _buffer_start; // Buffer bottom
   u1*   _buffer_end;   // Buffer top (one past last element)
+  // TODO 指向当前已读到的位置
   u1*   _current;      // Current buffer position
   char* _source;       // Source of stream (directory name, ZIP/JAR archive name)
   bool  _need_verify;  // True if verification is on for the class file
@@ -97,6 +99,8 @@ class ClassFileStream: public ResourceObj {
 
   // Read u4 from stream
   u4 get_u4(TRAPS);
+  // TODO 从字节码流中读取 4 字节内容.
+  //  实际执行的代码与硬件相关, 大端存储与小端存储不一样
   u4 get_u4_fast() {
     u4 res = Bytes::get_Java_u4(_current);
     _current += 4;

@@ -171,6 +171,7 @@ void MutableSpace::set_top_for_allocations() {
 #endif
 
 // This version requires locking. */
+// TODO 在 JVM 堆区分配内存
 HeapWord* MutableSpace::allocate(size_t size) {
   assert(Heap_lock->owned_by_self() ||
          (SafepointSynchronize::is_at_safepoint() &&
@@ -178,6 +179,7 @@ HeapWord* MutableSpace::allocate(size_t size) {
          "not locked");
   HeapWord* obj = top();
   if (pointer_delta(end(), obj) >= size) {
+    // TODO 将 permSpace 内存区域的 top 指针, 往高地址方向移动了 size 大小的字节数, 完成内存分配
     HeapWord* new_top = obj + size;
     set_top(new_top);
     assert(is_object_aligned((intptr_t)obj) && is_object_aligned((intptr_t)new_top),

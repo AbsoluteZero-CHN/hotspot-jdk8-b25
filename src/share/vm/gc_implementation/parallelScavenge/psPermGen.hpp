@@ -29,6 +29,9 @@
 
 class AdaptivePaddedAverage;
 
+// TODO 表示 perm 区, 在 Java8 以后, 字节码信息改为保存到 metaSpace
+//  metaSpace 属于本地内存, 本地指的就是操作系统, 本地内存直接从操作系统申请资源,
+//  因此默认情况下, metaSpace 大小只受操作系统物理内存和虚拟内存的限制
 class PSPermGen : public PSOldGen {
   friend class VMStructs;
  protected:
